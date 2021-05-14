@@ -1,0 +1,21 @@
+.form__name {
+    min-width: 358px;
+    margin: 0 auto;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-family: 'Inter', 'Arial', 'sans-serif';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.form__name:nth-last-of-type() {
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 320px) {
+    .form__name {
+        min-width: 238px;
+    }
+}

@@ -1,0 +1,6 @@
+.element__link {
+    width: 282px;
+    height: 282px;
+    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
+}

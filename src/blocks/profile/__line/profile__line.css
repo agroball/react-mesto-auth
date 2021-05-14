@@ -1,0 +1,13 @@
+.profile__line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+}
+
+@media screen and (max-width: 320px) {
+    .profile__line {
+        padding-left: 29px;
+        gap: 14px;
+    }
+}

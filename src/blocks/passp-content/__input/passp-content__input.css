@@ -1,0 +1,14 @@
+.passp-content__input{
+    padding: 0 0 13px 0;
+    border: none;
+    border-bottom: 2px solid #CCCCCC;
+    background-color: rgba(255, 255, 255, 0);
+    outline: none;
+    width: 358px;
+    color: #fff;
+    margin-top: 30px;
+}
+
+.passp-content__input:first-child{
+    margin-top: 50px;
+}

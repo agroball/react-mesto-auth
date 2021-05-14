@@ -1,0 +1,12 @@
+.element__number {
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 0;
+    position: absolute;
+    bottom: 8px;
+    right: 25px;
+    color: #000000;
+}

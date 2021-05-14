@@ -1,0 +1,21 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 68.75%;
+    gap: 41px;
+    border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+    padding-top: 45px;
+    padding-bottom: 41px;
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        width: 100%;
+        margin-top: 0;
+        gap: 0;
+        padding-top: 0;
+        padding-bottom: 31px;
+    }
+}

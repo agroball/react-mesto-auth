@@ -1,0 +1,7 @@
+.element {
+    border-radius: 10px;
+    background-color: #fff;
+    max-width: 282px;
+    position: relative;
+    cursor: pointer;
+}
