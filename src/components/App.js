@@ -11,6 +11,7 @@ import api from '../utils/api.js';
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import ProtectedRoute from "./ProtectedRoute";
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
@@ -24,6 +25,8 @@ function App() {
     const [isPopupWithImageOpen, setIsPopupWithImageOpen] = React.useState(false);
     const [cards, setCards] = React.useState([]);
     const [currentUser, setCurrentUser] = React.useState({ name: '', about: ''});
+    const [isSuccessPopupOpen, setIsSuccessPopupOpen] = React.useState(false);
+    const [isFailPopupOpen, setIsFailPopupOpen] = React.useState(false);
 
 
 
@@ -50,6 +53,14 @@ function App() {
 
     function handleEditAvatarClick() {
         setIsEditAvatarPopupOpen(true);
+    }
+
+    function handleSuccessPopupClick() {
+        setIsSuccessPopupOpen(true);
+    }
+
+    function handleFailPopupClick() {
+        setIsFailPopupOpen(true);
     }
 
     function handleCardClick(card) {
@@ -118,13 +129,52 @@ function App() {
 
 
 
+    /*авторизация пользователя*/
+    function handleLogin(email, password) {
+        auth.authorize(email, password)
+            .then((res) => {
+                localStorage.setItem('token', res.token);
+                setEmail(email);
+                setLoggedIn(true);
+                setExit(true);
+                props.history.push('/');
+            })
+            .catch((err) => {
+                    handleFailPopupClick();
+                    console.log(err)
+                }
+            );
+    }
+    /*регистрация пользователя*/
+    function handleRegister(email, password) {
+        auth.register(email, password)
+            .then((res) => {
+                handleSuccessPopupClick();
+                props.history.push('/sign-in');
+            })
+            .catch((err) => {
+                    handleFailPopupClick();
+                    console.log(err)
+                }
+            );
+    }
+
+
+
+
+
+
+
+
     return (
 <>
     <CurrentUserContext.Provider value={currentUser}>
       <Header/>
         <Switch>
-            <Main
-                exact path="/"
+            <ProtectedRoute
+                exact="exact"
+                path="/"
+                component={Main}
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
                 onEditAvatar={handleEditAvatarClick}
@@ -158,6 +208,16 @@ function App() {
             onAddPlace={handleAddPlaceSubmit}
         />
 
+        <InfoToolTip
+            isOpen={isSuccessPopupOpen}
+            onClose={closeAllPopups}
+            title="Вы успешно зарегистрировались!"
+        />
+        <InfoToolTip
+            isOpen={isFailPopupOpen}
+            onClose={closeAllPopups}
+            title="Что-то пошло не так!Попробуйте ещё раз."
+        />
 
 
           <PopupWithForm name="agreePopup"

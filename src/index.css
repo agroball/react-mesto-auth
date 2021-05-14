@@ -51,3 +51,5 @@
 @import url(./blocks/passp-content/__title/passp-content__title.css);
 @import url(./blocks/passp-content/__input/passp-content__input.css);
 @import url(./blocks/passp-content/__button-submit/passp-content__button-submit.css);
+@import url(./blocks/passp-content/__link/passp-content__link.css);
+@import url(./blocks/passp-content/__check/passp-content__check.css);
