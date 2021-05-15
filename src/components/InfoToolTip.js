@@ -1,3 +1,6 @@
+import closeBtn from '../images/Close_Icon.svg';
+import React from "react";
+
 function InfoTooltip ({onClose, isOpen, message}) {
 
     return (
@@ -5,7 +8,10 @@ function InfoTooltip ({onClose, isOpen, message}) {
             <div className="popup__container">
                 <img src={message.iconPath} alt="" className="popup__result-icon" />
                 <p className="popup__title-info">{message.text}</p>
-                <button type="button" className="popup__button-close" onClick={onClose} />
+                <button type="button"
+                        src={closeBtn}
+                        alt="Кнопка закрыть"
+                        className="popup__close-button" onClick={onClose} />
             </div>
         </div>
     );
