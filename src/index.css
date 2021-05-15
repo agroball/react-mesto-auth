@@ -56,3 +56,6 @@
 @import url(./blocks/start-screen/__submit/start-screen__submit.css);
 @import url(./blocks/start-screen/__title/start-screen__title.css);
 @import url(./blocks/start-screen/__login/start-screen__login.css);
+@import url(./blocks/popup/__container/_reg/popup__container_reg.css);
+@import url(./blocks/popup/__result-icon/popup__result-icon.css);
+@import url(./blocks/popup/__title-info/popup__title-info.css);

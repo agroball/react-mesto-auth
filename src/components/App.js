@@ -187,7 +187,7 @@ function App() {
                 setTimeout(history.push, 3000, "/");
                 setTimeout(closeAllPopups, 2500);
             }).catch((err) => {
-            handleInfoTooltipContent({iconPath: RegNoOK, text: 'Что то пошло не так!'})
+            handleInfoTooltipContent({iconPath: RegNoOK, text: 'Что то пошло не так! Попробуйте еще раз!'})
             handleInfoTooltipPopupOpen();
             console.log(err)
         })

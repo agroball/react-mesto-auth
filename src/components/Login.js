@@ -16,7 +16,6 @@ function Login({authorization}) {
         e.preventDefault()
         const email = valueEmail;
         const password = valuePassword;
-
         authorization(email,password);
     }
 

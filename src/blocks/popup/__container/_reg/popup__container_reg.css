@@ -1,0 +1,12 @@
+.popup__container_reg {
+    width: 430px;
+    height: 330px;
+    position: absolute;
+    top: auto;
+    left: auto;
+    box-sizing: border-box;
+    padding: 0 36px;
+    background-color: #FFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
