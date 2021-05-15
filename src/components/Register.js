@@ -1,43 +1,36 @@
 import React from 'react';
-import InputForm from './InputForm';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-function  Register(props) {
-    /*переменные для управления инпутами*/
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+function Register({registration}) {
+    const [valueEmail, setValueEmail] = React.useState('');
+    const [valuePassword, setValuePassword] = React.useState('');
 
-    /*функции для смены значений переменых из стейта*/
-    function handleEmail(e) {
-        setEmail(e.target.value);
+    function handleChangeEmail(e) {
+        setValueEmail(e.target.value);
     }
 
-    function handlePassword(e) {
-        setPassword(e.target.value);
+    function handleChangePassword(e) {
+        setValuePassword(e.target.value);
     }
 
-    /*отмена стандартного поведения + отправка введенных данных в инпуты на сервер*/
-    function handleSubmit(e) {
-        e.preventDefault();
-        props.onRegister(email, password);
+    function handleSubmit(e){
+        e.preventDefault()
+        const email = valueEmail;
+        const password = valuePassword;
+        registration(email, password)
     }
-
-    /*при монтировании контролирует название элемента link в компоненте Header*/
-    React.useEffect(() => {
-        if (props.isAuth) props.handleLink()
-    }, [])
 
     return (
-        <div className="passp-content">
-            <form className="passp-content__form" noValidate onSubmit={handleSubmit}>
-                <h2 className="passp-content__title">Регистрация</h2>
-                <InputForm className="passp-content__input" placeholder="Email" type="email"></InputForm>
-                <InputForm className="passp-content__input" placeholder="Пароль" type="password"></InputForm>
-                <button className="passp-content__button-submit" >Зарегистрироваться</button>
+        <section className="start-screen">
+            <h1 className="start-screen__title">Регистрация</h1>
+            <form onSubmit={handleSubmit} className="start-screen__form">
+                <input value={valueEmail} type="email" className="start-screen__input" placeholder="Email" onChange={handleChangeEmail}/>
+                <input value={valuePassword} type="password" className="start-screen__input" placeholder="Пароль" onChange={handleChangePassword}/>
+                <button className="start-screen__submit">Зарегистрироваться</button>
             </form>
-            <p className="passp-content__check">Уже зарегистрированы? <Link to="sign-in" onClick={props.handleLink} className="passp-content__link" href="#">Войти</Link></p>
-        </div>
+            <Link className="start-screen__login" to="/sign-in">Уже зарегистрированы? Войти</Link>
+        </section>
     );
 }
 
-export default withRouter(Register);
+export default Register;

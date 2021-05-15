@@ -8,10 +8,12 @@ import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import api from '../utils/api.js';
+import * as Auth from '../utils/auth';
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import ProtectedRoute from "./ProtectedRoute";
+import InfoToolTip from "./InfoToolTip";
 import React from "react";
 import { Route, Switch, Redirect, withRouter } from "react-router-dom";
 
@@ -129,35 +131,51 @@ function App() {
 
 
 
-    /*авторизация пользователя*/
-    function handleLogin(email, password) {
-        auth.authorize(email, password)
-            .then((res) => {
-                localStorage.setItem('token', res.token);
-                setEmail(email);
-                setLoggedIn(true);
-                setExit(true);
-                props.history.push('/');
-            })
-            .catch((err) => {
-                    handleFailPopupClick();
-                    console.log(err)
-                }
-            );
-    }
-    /*регистрация пользователя*/
-    function handleRegister(email, password) {
-        auth.register(email, password)
-            .then((res) => {
-                handleSuccessPopupClick();
-                props.history.push('/sign-in');
-            })
-            .catch((err) => {
-                    handleFailPopupClick();
-                    console.log(err)
-                }
-            );
-    }
+    // Регистрация
+    // function registration(email, password) {
+    //     Auth.register(escapeHtml(email), password).then((res) => {
+    //         if(res.status === 201){
+    //             handleInfoTooltipContent({iconPath: registrationOk, text: 'Вы успешно зарегистрировались!'})
+    //             handleInfoTooltipPopupOpen();
+    //             // Перенаправляем на страницу логина спустя 3сек и закрываем попап
+    //             setTimeout(history.push, 3000, "/sign-in");
+    //             setTimeout(closeAllPopups, 2500);
+    //         }
+    //         if(res.status === 400) {
+    //             console.log('Введный емейл ужезарегестрирован')
+    //         }
+    //     }).catch((err)=> {
+    //         handleInfoTooltipContent({iconPath: registrationNoOK, text: 'Что-то пошло не так! Попробуйте ещё раз.'})
+    //         handleInfoTooltipPopupOpen();
+    //         setTimeout(closeAllPopups, 2500);
+    //         console.log(err)
+    //     })
+    // }
+    // // Авторизация
+    // function authorization(email, password) {
+    //     Auth.authorize(escapeHtml(email), password )
+    //         .then((data) => {
+    //             if (!data) {
+    //                 throw new Error('Произошла ошибка');
+    //             }
+    //             Auth.getContent(data)
+    //                 .then((res) => {
+    //                     setEmail(res.data.email);
+    //                 }).catch(err => console.log(err));
+    //             setLoggedIn(true);
+    //             handleInfoTooltipContent({iconPath: registrationOk, text: 'Вы успешно авторизовались!'})
+    //             handleInfoTooltipPopupOpen();
+    //             // Перенаправляем на главную страницу спустя 3сек и закрываем попап
+    //             setTimeout(history.push, 3000, "/");
+    //             setTimeout(closeAllPopups, 2500);
+    //         }).catch((err) => {
+    //         handleInfoTooltipContent({iconPath: registrationNoOK, text: 'Что то пошло не так!'})
+    //         handleInfoTooltipPopupOpen();
+    //         console.log(err)
+    //     })
+    // }
+
+
 
 
 
@@ -171,9 +189,8 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <Header/>
         <Switch>
-            <ProtectedRoute
-                exact="exact"
-                path="/"
+            {currentUser && <ProtectedRoute
+                exact path="/"
                 component={Main}
                 onEditProfile={handleEditProfileClick}
                 onAddPlace={handleAddPlaceClick}
@@ -182,16 +199,18 @@ function App() {
                 cards={cards}
                 onCardLike={handleLikeClick}
                 onCardDelete={handleDeleteClick}
-            />
-            <Route exact path="/sign-up">
-               <Login/>
+            />}
+            <Route path="/sign-in">
+                <Login
+
+                />
             </Route>
-            <Route exact path="/sign-in">
-                <Register/>
+            <Route path="/sign-up">
+                <Register
+
+                />
             </Route>
         </Switch>
-        {/*{loggenIn && <Footer/>}*/}
-        <Footer/>
         <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
@@ -207,18 +226,6 @@ function App() {
             onClose={closeAllPopups}
             onAddPlace={handleAddPlaceSubmit}
         />
-
-        <InfoToolTip
-            isOpen={isSuccessPopupOpen}
-            onClose={closeAllPopups}
-            title="Вы успешно зарегистрировались!"
-        />
-        <InfoToolTip
-            isOpen={isFailPopupOpen}
-            onClose={closeAllPopups}
-            title="Что-то пошло не так!Попробуйте ещё раз."
-        />
-
 
           <PopupWithForm name="agreePopup"
                          title="Вы уверены?"

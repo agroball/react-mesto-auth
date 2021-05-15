@@ -3,6 +3,10 @@
 @import url(./blocks/body/body.css);
 @import url(./blocks/header/header.css);
 @import url(./blocks/header/__logo/header__logo.css);
+@import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__link/header__link.css);
+@import url(./blocks/header/__signout/header__signout.css);
+@import url(./blocks/header/__wrap/header__wrap.css);
 @import url(./blocks/main/main.css);
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__header/profile__header.css);
@@ -46,10 +50,9 @@
 @import url(./blocks/profile/__avatar/profile__avatar-button.css);
 @import url(./blocks/profile/__avatar/profile__avatar-container.css);
 @import url(./blocks/element/__trash/_hiden/element__trash_hidden.css);
-@import url(./blocks/passp-content/passp-content.css);
-@import url(./blocks/passp-content/__form/passp-content__form.css);
-@import url(./blocks/passp-content/__title/passp-content__title.css);
-@import url(./blocks/passp-content/__input/passp-content__input.css);
-@import url(./blocks/passp-content/__button-submit/passp-content__button-submit.css);
-@import url(./blocks/passp-content/__link/passp-content__link.css);
-@import url(./blocks/passp-content/__check/passp-content__check.css);
+@import url(./blocks/start-screen/start-screen.css);
+@import url(./blocks/start-screen/__form/start-screen__form.css);
+@import url(./blocks/start-screen/__input/start-screen__input.css);
+@import url(./blocks/start-screen/__submit/start-screen__submit.css);
+@import url(./blocks/start-screen/__title/start-screen__title.css);
+@import url(./blocks/start-screen/__login/start-screen__login.css);

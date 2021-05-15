@@ -1,16 +1,14 @@
-import React from 'react';
-import closeBtn from '../images/Close_Icon.svg';
+function InfoTooltip ({onClose, isOpen, message}) {
 
-function InfoToolTip(props) {
     return (
-        <div className={`popup ${props.isOpen && 'popup_opened'}`} onClick={props.overlayClose}>
-            <form className="popup__container popup__notification" name="popup_notification">
-                <button className="popup__close" type="button" onClick={props.onClose}></button>
-                <img className="popup__image-notification" src={props.src} alt="Уведомление"/>
-                <h2 className="popup__title popup__title-notification">{props.title}</h2>
-            </form>
+        <div className={`popup ${isOpen ? 'popup_opened' : ''}`}>
+            <div className="popup__container">
+                <img src={message.iconPath} alt="" className="popup__result-icon" />
+                <p className="popup__title-info">{message.text}</p>
+                <button type="button" className="popup__button-close" onClick={onClose} />
+            </div>
         </div>
-    )
+    );
 }
 
-export default InfoToolTip;
+export default InfoTooltip ;
