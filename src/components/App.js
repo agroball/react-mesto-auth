@@ -145,10 +145,7 @@ function App() {
             .catch((err) => console.log(err));
     }
 
-
-
     // Регистрация
-
     function registration(email, password) {
         Auth.register(email, password).then((res) => {
             if(res.status === 201){
@@ -168,8 +165,8 @@ function App() {
             console.log(err)
         })
     }
-    // Авторизация
 
+    // Авторизация
     function authorization(email, password) {
         Auth.authorize(email, password )
             .then((data) => {
