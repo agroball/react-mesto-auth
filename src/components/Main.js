@@ -14,6 +14,7 @@ function Main(props) {
         <div className="profile__avatar-container" >
         <img className="profile__avatar"
              src={currentUser.avatar}
+             alt="Фото аватара"
         />
         <button className="profile__avatar-button" onClick={props.onEditAvatar}/>
         </div>

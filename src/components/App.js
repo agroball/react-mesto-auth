@@ -3,7 +3,6 @@ import Header from './Header.js';
 import Main from './Main.js';
 import Login from './Login.js';
 import Register from './Register';
-import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
@@ -17,7 +16,7 @@ import InfoTooltip from "./InfoToolTip";
 import React from "react";
 import RegOk from '../images/registration-ok.svg';
 import RegNoOK from '../images/login-fail.svg';
-import { Route, Switch, Redirect, withRouter, useHistory } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 
 
 function App() {
