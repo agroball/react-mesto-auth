@@ -10,7 +10,6 @@ export class Api {
                 headers: this.headers
             })
             .then(this._checkResult)
-            .catch(this._showError)
     }
 
     getUserInfo() {
@@ -19,7 +18,7 @@ export class Api {
                 headers: this.headers
             })
             .then(this._checkResult)
-            .catch(this._showError)
+
     }
 
     setUserInfo(newName, newAbout) {
@@ -32,7 +31,7 @@ export class Api {
                 })
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
 
     updateAvatarImage(data) {
@@ -42,7 +41,7 @@ export class Api {
                 body: JSON.stringify(data)
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
 
     addCard(name, link) {
@@ -56,7 +55,7 @@ export class Api {
 
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
 
     deleteCard(cardId) {
@@ -66,7 +65,7 @@ export class Api {
 
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
 
     addLike(cardId) {
@@ -75,7 +74,7 @@ export class Api {
                 headers: this.headers,
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
     removeLike(cardId) {
         return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
@@ -84,7 +83,7 @@ export class Api {
 
             })
             .then(this._checkResult)
-            .catch(this._showError);
+
     }
 
     _checkResult(res) {
@@ -94,10 +93,7 @@ export class Api {
         return Promise.reject(`Ошибка: ${res.status}`);
     };
 
-    _showError(err) {
-        console.log(err);
-        return Promise.reject(err);
-    };
+
 
     changeLikeCardStatus(cardId, isLiked) {
         if (isLiked) {

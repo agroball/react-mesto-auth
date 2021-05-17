@@ -14,7 +14,6 @@ return (
             <form  className="form"
                    name={props.name}
                    onSubmit={props.onSubmit}
-                   id="formProfile"
                    noValidate>
                 <h2 className="form__header">{props.title}</h2>
                 {props.children}

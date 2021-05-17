@@ -17,6 +17,7 @@ import React from "react";
 import RegOk from '../images/registration-ok.svg';
 import RegNoOK from '../images/login-fail.svg';
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import Footer from "./Footer";
 
 
 function App() {
@@ -88,7 +89,7 @@ function App() {
         setIsEditProfilePopupOpen(false);
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
-        setSelectedCard('' );
+        setSelectedCard({});
         setIsPopupWithImageOpen(false);
         setIsInfoTooltipPopupOpen(false);
     }
@@ -228,6 +229,7 @@ function App() {
                 {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
             </Route>
         </Switch>
+        {loggedIn && <Footer />}
         <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
