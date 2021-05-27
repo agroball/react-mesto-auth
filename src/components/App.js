@@ -53,6 +53,7 @@ function App() {
         const promises = [api.getUserInfo(), api.getInitialCards()];
         Promise.all(promises)
             .then(([user, cards]) => {
+                console.log(user, cards)
                 setCurrentUser(user);
                 setCards(cards);
             })
@@ -60,6 +61,8 @@ function App() {
                 console.log(error);
             })
     }, []);
+
+
 
     function handleEditProfileClick() {
         setIsEditProfilePopupOpen(true);
